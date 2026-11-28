@@ -1,15 +1,28 @@
 class Solution {
     public int mySqrt(int x) {
-        long b=x;
-        long ans=0;
-        for(long i=1;i<=(b/2)+1;i++){
-            if(i*i <=b && (i+1)*(i+1)>b){
-                ans=i;
-                break;
-            }
-        }
+        int low=1;
+        int high=x;
         
-        return (int)ans;
+        
+        if(x==1){
+            return 1;
+        }
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            
+            if(mid<x/mid){
+                low=mid+1;
+            }
+            else if(mid>x/mid){
+                high=mid-1;
+            }
+            else{
+                
+                return mid;
+            }
+            
+        }
+        return high;
     }
 }
 
